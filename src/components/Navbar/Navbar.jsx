@@ -1,28 +1,27 @@
 import { useContext } from "react";
-import {  Link, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
   const navLinks = (
     <>
-      <li className="font-medium text-base">    
+      <li className="font-medium text-base">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li className="font-medium text-base">    
+      <li className="font-medium text-base">
         <NavLink to="/addproduct">Add Product</NavLink>
       </li>
-      <li className="font-medium text-base"> 
-        <NavLink to="/mycart">My Cart</NavLink> 
+      <li className="font-medium text-base">
+        <NavLink to="/mycart">My Cart</NavLink>
       </li>
-      
     </>
   );
 
-//   context
+  //   context
   const { user, logOut } = useContext(AuthContext);
 
-//   handle onclick
+  //   handle onclick
   const handleSignOut = () => {
     logOut()
       .then(() => {
@@ -60,13 +59,15 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-              <img className="w-1/6 filter invert " src="https://i.ibb.co/CVbmR1K/car.png" alt="logo" />
-              <p className="text-xl font-bold" >GearUp</p>
+        <img
+          className="w-[20%] md:w-[13%] lg:w-[12%] filter invert "
+          src="https://i.ibb.co/CVbmR1K/car.png"
+          alt="logo"
+        />
+        <p className="text-xl ml-2 font-semibold">GearUp</p>
       </div>
       <div className="navbar-center hidden lg:flex">
-              <ul className="menu menu-horizontal px-1">
-                  {navLinks}
-              </ul>
+        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
         {user ? (
