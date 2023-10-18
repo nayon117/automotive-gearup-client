@@ -6,13 +6,13 @@ const WhyChoose = () => {
     <div className="my-12">
       <section className="relative block px-6 py-10 md:py-20 md:px-10  border-t border-b border-neutral-900">
         <div className="relative mx-auto max-w-5xl text-center">
-          <span className=" text-3xl text-gray-600 font-semibold my-3 flex items-center justify-center  uppercase tracking-wider">
+          <span className=" text-3xl font-semibold my-3 flex items-center justify-center  uppercase tracking-wider">
             Why choose us
           </span>
-          <h2 className="block w-full bg-gradient-to-b from-white to-gray-400 bg-clip-text font-bold text-transparent text-3xl sm:text-4xl">
+          <h2 className="block w-full bg-gradient-to-b from-white to-gray-600 bg-clip-text font-bold text-transparent text-3xl sm:text-4xl">
           Discover excellence and convenience with us
           </h2>
-          <p className="mx-auto my-4 w-full max-w-xl bg-transparent text-center font-medium leading-relaxed tracking-wide text-gray-400">
+          <p className="mx-auto my-4 w-full max-w-xl bg-transparent text-center font-medium leading-relaxed tracking-wide text-gray-500">
           We provide top-tier service and seamless experiences, making your automotive journey truly exceptional.
           </p>
         </div>

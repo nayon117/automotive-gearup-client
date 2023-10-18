@@ -4,7 +4,7 @@ const Testimonial = () => {
         <div>
         <div className="lg:px-20 md:px-6 px-4 py-12">
             <div className="flex flex-col items-center justify-center">
-                <h1 className="lg:text-4xl text-3xl font-bold text-center text-gray-800">Hear from our customers</h1>
+                <h1 className="text-3xl font-semibold text-center text-gray-800">Hear from our customers</h1>
                 <p className="text-base leading-6 mt-4 text-center text-gray-600 2xl:w-2/5 ">Discover what our satisfied customers have to say about their experiences. Read real stories of trust, satisfaction, and exceptional service in the world of automotives.</p>
             </div>
             <div className="w-full lg:flex items-center gap-6 mt-10">

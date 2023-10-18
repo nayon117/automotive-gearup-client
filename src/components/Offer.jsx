@@ -1,11 +1,11 @@
 import { AiFillCar } from "react-icons/ai";
 const Offer = () => {
     return (
-        <div className="my-20">
+        <div className="mt-20 mb-6">
             <div>
                 <h2 className="text-3xl font-semibold text-center">What we offer</h2>
             </div>
-            <div className="flex items-center gap-8 py-10">
+            <div className="flex flex-col md:flex-row items-center gap-8 py-10">
                 {/* img */}
                 <div className="flex-1">
                     <img className="rounded-md" src="https://i.ibb.co/K5d9smF/offer-img.webp" alt="car image" />
