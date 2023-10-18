@@ -3,6 +3,7 @@ import Banner from "../../components/Banner";
 import CarsCard from "../../components/CarsCard";
 import Testimonial from "../../components/Testimonial";
 import WhyChoose from "../../components/WhyChoose";
+import Offer from "../../components/Offer";
 
 const Home = () => {
     const loadedCars = useLoaderData()
@@ -28,6 +29,7 @@ const Home = () => {
             </div>
             </div>
             <WhyChoose></WhyChoose>
+            <Offer></Offer>
             <Testimonial></Testimonial>
         </div>
     );
