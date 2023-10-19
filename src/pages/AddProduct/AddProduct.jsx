@@ -2,32 +2,32 @@ import toast from "react-hot-toast";
 
 const AddProduct = () => {
   const handleAddCars = (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const name = form.name.value;
-      const brand = form.brand.value;
-      const type = form.type.value;
-      const price = form.price.value;
-      const description = form.description.value;
-      const rating = form.rating.value;
-      const image = form.image.value;
-      const newCar = {name,brand,type,price,description,rating,image}
-      console.log(newCar);
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const brand = form.brand.value;
+    const type = form.type.value;
+    const price = form.price.value;
+    const description = form.description.value;
+    const rating = form.rating.value;
+    const image = form.image.value;
+    const newCar = { name, brand, type, price, description, rating, image };
+    console.log(newCar);
 
-      fetch('http://localhost:5000/cars', {
-          method: 'POST',
-          headers: {
-              'content-type':'application/json'
-          },
-          body: JSON.stringify(newCar)
-      })
-      .then(res=>res.json())
-          .then(data => {
-            console.log(data);
-            if (data.acknowledged) {
-                  toast.success("product added successfully");
-                }
-      })
+    fetch("http://localhost:5000/cars", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newCar),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          toast.success("product added successfully");
+        }
+      });
   };
 
   return (

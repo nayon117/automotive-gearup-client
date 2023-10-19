@@ -31,7 +31,7 @@ const UpdateCar = () => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
-            toast.success('Product updated successfully')
+          toast.success("Product updated successfully");
         }
       });
   };

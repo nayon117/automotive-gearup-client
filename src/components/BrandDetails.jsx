@@ -2,7 +2,23 @@ import { useLoaderData } from "react-router-dom";
 
 const BrandDetails = () => {
     const details = useLoaderData()
-    const {name,brand,type,price,description,rating,image} = details || {}
+    const { _id, name, brand, type, price, description, rating, image } = details || {}
+    
+    const handleAddToCart = (details) => {
+        console.log(_id);
+        fetch("http://localhost:5000/carts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(details),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+          console.log(data);     
+      });
+    }
+
     return (
         <div>
             <img className="rounded-md" src={image} alt="" />
@@ -14,7 +30,7 @@ const BrandDetails = () => {
             <h2>Rating: { rating}</h2>
             <h2>Description: {description}</h2>
            </div>
-             <button className="btn btn-neutral">Add to cart</button>
+             <button onClick={()=>handleAddToCart(details)} className="btn btn-neutral">Add to cart</button>
         </div>
     );
 };
