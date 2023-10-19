@@ -8,6 +8,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import BrandPage from "../components/BrandPage";
 import BrandDetails from "../components/BrandDetails";
+import UpdateCar from "../components/UpdateCar";
 
 const myCreatedRoute = createBrowserRouter([
     {
@@ -45,6 +46,11 @@ const myCreatedRoute = createBrowserRouter([
                 path: '/details/:id',
                 element: <BrandDetails></BrandDetails>,
                 loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
+            },
+            {
+                path: '/update/:id',
+                element: <UpdateCar></UpdateCar>,
+                 loader:({params})=>fetch(`http://localhost:5000/update/${params.id}`)
             },
         ]
         

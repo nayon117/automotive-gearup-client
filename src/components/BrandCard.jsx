@@ -20,7 +20,9 @@ const BrandCard = ({ car }) => {
             {description}
           </p>
           <div className="flex items-center gap-5">
+            <Link to={`/update/${_id}`}>
             <button className="btn btn-sm btn-neutral">update</button>
+            </Link>
             <Link to={`/details/${_id}`}>
               <button className="btn btn-sm btn-neutral">details</button>
             </Link>
