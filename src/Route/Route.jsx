@@ -7,6 +7,7 @@ import MyCart from "../pages/MyCart/MyCart";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import BrandPage from "../components/BrandPage";
+import BrandDetails from "../components/BrandDetails";
 
 const myCreatedRoute = createBrowserRouter([
     {
@@ -17,7 +18,7 @@ const myCreatedRoute = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader:()=>fetch('https://automotive-gearup-server-jnvx49soo-nayon117.vercel.app/cars')
+                loader:()=>fetch('https://automotive-gearup-server.vercel.app/cars')
             },
             {
                 path: '/addproduct',
@@ -38,7 +39,12 @@ const myCreatedRoute = createBrowserRouter([
             {
                 path: '/cars/:brand',
                 element: <BrandPage></BrandPage>,
-                loader:({params})=>fetch(`http://localhost:5000/cars/${params.brand}`)
+                loader:({params})=>fetch(`https://automotive-gearup-server.vercel.app/cars/${params.brand}`)
+            },
+            {
+                path: '/details/:id',
+                element: <BrandDetails></BrandDetails>,
+                loader:({params})=>fetch(`https://automotive-gearup-server.vercel.app/details/${params.id}`)
             },
         ]
         

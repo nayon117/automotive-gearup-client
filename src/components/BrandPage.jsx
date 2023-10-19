@@ -3,7 +3,7 @@ import BrandCard from "./BrandCard";
 
 const BrandPage = () => {
   const brandCars = useLoaderData();
-  console.log(brandCars);
+   
   return (
     <div>
       {brandCars.length === 0 ? (

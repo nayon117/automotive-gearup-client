@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const BrandCard = ({ car }) => {
-  const { name, brand, description,image } = car || {};
+  const {_id, name, brand, description, image } = car || {};
   return (
     <div className="py-12">
       <div className="relative flex w-full max-w-[50rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
@@ -20,7 +21,9 @@ const BrandCard = ({ car }) => {
           </p>
           <div className="flex items-center gap-5">
             <button className="btn btn-sm btn-neutral">update</button>
-            <button className="btn btn-sm btn-neutral">details</button>
+                      <Link to={`/details/${_id}`}>
+                      <button className="btn btn-sm btn-neutral">details</button>
+                      </Link>
           </div>
         </div>
       </div>
