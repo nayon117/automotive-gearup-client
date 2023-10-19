@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 const AddProduct = () => {
   const handleAddCars = (e) => {
       e.preventDefault();
@@ -12,7 +14,7 @@ const AddProduct = () => {
       const newCar = {name,brand,type,price,description,rating,image}
       console.log(newCar);
 
-      fetch('https://automotive-gearup-server.vercel.app/cars', {
+      fetch('http://localhost:5000/cars', {
           method: 'POST',
           headers: {
               'content-type':'application/json'
@@ -21,7 +23,10 @@ const AddProduct = () => {
       })
       .then(res=>res.json())
           .then(data => {
-          console.log(data);
+            console.log(data);
+            if (data.acknowledged) {
+                  toast.success("product added successfully");
+                }
       })
   };
 

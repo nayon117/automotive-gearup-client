@@ -7,6 +7,7 @@ import Offer from "../../components/Offer";
 
 const Home = () => {
     const loadedCars = useLoaderData()
+    
 
  
     return (
