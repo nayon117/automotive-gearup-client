@@ -4,7 +4,7 @@ const Testimonial = () => {
         <div>
         <div className="lg:px-20 md:px-6 px-4 py-12">
             <div className="flex flex-col items-center justify-center">
-                <h1 className="text-3xl font-semibold text-center text-gray-800">Hear from our customers</h1>
+                <h1 className="text-3xl font-semibold text-center text-gray-500">Hear from our customers</h1>
                 <p className="text-base leading-6 mt-4 text-center text-gray-600 2xl:w-2/5 ">Discover what our satisfied customers have to say about their experiences. Read real stories of trust, satisfaction, and exceptional service in the world of automotives.</p>
             </div>
             <div className="w-full lg:flex items-center gap-6 mt-10">
@@ -23,7 +23,7 @@ const Testimonial = () => {
                             <img src="https://i.ibb.co/R6WQhYj/Mask-Group.png" className="w-10 h-10 rounded-full" alt="profile" />
                         </div>
                         <div className="flex flex-col items-start ml-4">
-                            <p className="text-base font-semibold leading-4 text-gray-800">Alisha Cooper</p>
+                            <p className="text-base font-semibold leading-4 text-gray-500">Alisha Cooper</p>
                             <p className="text-base leading-4 mt-2 text-center text-gray-600">Happy Car Buyer</p>
                         </div>
                     </div>
@@ -43,7 +43,7 @@ const Testimonial = () => {
                             <img src="https://i.ibb.co/C6bwf12/Mask-Group.png" className="w-10 h-10 rounded-full" alt="profile" />
                         </div>
                         <div className="flex flex-col items-start ml-4">
-                            <p className="text-base font-semibold leading-4 text-gray-800">Henry Jack</p>
+                            <p className="text-base font-semibold leading-4 text-gray-500">Henry Jack</p>
                             <p className="text-base leading-4 mt-2 text-center text-gray-600">Loyal Automotive Enthusiast</p>
                         </div>
                     </div>

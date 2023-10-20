@@ -24,12 +24,21 @@ const myCreatedRoute = createBrowserRouter([
       },
       {
         path: "/addproduct",
-        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AddProduct></AddProduct>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/mycart",
-        element: <PrivateRoute><MyCart></MyCart></PrivateRoute>,
-        loader:()=>fetch('http://localhost:5000/carts')
+        element: (
+          <PrivateRoute>
+            <MyCart></MyCart>
+          </PrivateRoute>
+        ),
+        loader: () =>
+          fetch('http://localhost:5000/carts'),
       },
       {
         path: "/login",
@@ -44,23 +53,32 @@ const myCreatedRoute = createBrowserRouter([
         element: <BrandPage></BrandPage>,
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/cars/${params.brand}`
+            `https://automotive-gearup-server.vercel.app/cars/${params.brand}`
           ),
       },
       {
         path: "/details/:id",
-        element: <PrivateRoute><BrandDetails></BrandDetails></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <BrandDetails></BrandDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/details/${params.id}`
+            `https://automotive-gearup-server.vercel.app/details/${params.id}`
           ),
       },
       {
         path: "/update/:id",
-        element:<PrivateRoute> <UpdateCar></UpdateCar></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <UpdateCar></UpdateCar>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/update/${params.id}`
+            `https://automotive-gearup-server.vercel.app/update/${params.id}`
           ),
       },
     ],

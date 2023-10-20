@@ -32,7 +32,21 @@ const Login = () => {
 
         signIn(email, password)
             .then(res => {
-                console.log(res.user);
+              console.log(res.user);
+              const user = { email }
+              fetch('http://localhost:5000/carts', {
+                method: 'POST',
+                headers: {
+                  'content-type':'application/json'
+                },
+                body:JSON.stringify(user)
+              })
+              .then(res=>res.json())
+                .then(data => {
+                console.log(data);
+              })
+
+
               toast.success('Login Successful')
               navigate(location?.state ? location.state : '/')
             })

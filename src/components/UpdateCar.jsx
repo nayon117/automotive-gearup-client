@@ -5,16 +5,17 @@ import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 
 const UpdateCar = () => {
-  const [updateCar,setUpdateCar] = useState({})
+  const [updateCar, setUpdateCar] = useState({});
   const loadedCar = useLoaderData();
 
   useEffect(() => {
     if (loadedCar) {
-      setUpdateCar(loadedCar)
+      setUpdateCar(loadedCar);
     }
-  },[loadedCar])
+  }, [loadedCar]);
 
-  const { _id, name, brand, type, price, description, rating, image } = updateCar || {} 
+  const { _id, name, brand, type, price, description, rating, image } =
+    updateCar || {};
   const handleUpdateCars = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -26,9 +27,8 @@ const UpdateCar = () => {
     const rating = form.rating.value;
     const image = form.image.value;
     const updatedCar = { name, brand, type, price, description, rating, image };
-     
 
-    fetch(`http://localhost:5000/update/${_id}`, {
+    fetch(`https://automotive-gearup-server.vercel.app/update/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

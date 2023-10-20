@@ -14,7 +14,7 @@ const AddProduct = () => {
     const newCar = { name, brand, type, price, description, rating, image };
     console.log(newCar);
 
-    fetch("http://localhost:5000/cars", {
+    fetch("https://automotive-gearup-server.vercel.app/cars", {
       method: "POST",
       headers: {
         "content-type": "application/json",
