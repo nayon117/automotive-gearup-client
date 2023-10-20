@@ -15,7 +15,7 @@ const BrandDetails = () => {
     details || {};
 
   const handleAddToCart = (details) => {
-    fetch("http://localhost:5000/carts", {
+    fetch("https://automotive-gearup-server.vercel.app/carts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

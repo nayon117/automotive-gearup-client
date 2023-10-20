@@ -15,7 +15,7 @@ const CartsCard = ({ cart, carts, setCarts }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/carts/${_id}`, {
+        fetch(`https://automotive-gearup-server.vercel.app/carts/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
