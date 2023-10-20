@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+ 
 
 const BrandCard = ({ car }) => {
   const { _id, name, brand, description, image } = car || {};
   return (
     <div className="my-12">
+     
       <div className="relative  flex w-full max-w-[50rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
         <div className="relative flex-1 m-0 overflow-hidden text-gray-700 bg-white rounded-r-none shrink-0 rounded-xl bg-clip-border">
           <img src={image} alt="image" className="object-cover w-full h-full" />

@@ -14,7 +14,7 @@ const UpdateCar = () => {
     }
   },[loadedCar])
 
-  const { _id, name, brand, type, price, description, rating, image } = updateCar;
+  const { _id, name, brand, type, price, description, rating, image } = updateCar || {} 
   const handleUpdateCars = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -26,7 +26,7 @@ const UpdateCar = () => {
     const rating = form.rating.value;
     const image = form.image.value;
     const updatedCar = { name, brand, type, price, description, rating, image };
-    console.log(updatedCar);
+     
 
     fetch(`http://localhost:5000/update/${_id}`, {
       method: "PUT",

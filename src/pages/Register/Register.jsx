@@ -52,7 +52,7 @@ const Register = () => {
       .then((res) => {
         console.log(res.user);
         toast.success("sign up successfull");
-        navigate("/");
+        navigate("/login");
         handleUpdateProfile(name, photo)
           .then(() => {
             window.location.reload();

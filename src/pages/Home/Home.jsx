@@ -32,11 +32,13 @@ const Home = () => {
                          
                     ></CarsCard>)
                 }
-            </div>
+                </div>
+                
             </div>
             <WhyChoose></WhyChoose>
             <Offer></Offer>
             <Testimonial></Testimonial>
+             
         </div>
     );
 };
