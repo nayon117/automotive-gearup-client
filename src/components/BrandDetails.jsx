@@ -1,11 +1,20 @@
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 
 const BrandDetails = () => {
-    const details = useLoaderData()
-    const { _id, name, brand, type, price, description, rating, image } = details || {}
+    const [details,setDetails] = useState({}) 
+  const loadedDetails = useLoaderData()
+  useEffect(() => {
+    if (loadedDetails) {
+        setDetails(loadedDetails)
+      }
+  }, [loadedDetails])
+  
+    const { name, brand, type, price, description, rating, image } = details || {}
     
     const handleAddToCart = (details) => {
-        console.log(_id);
+        
         fetch("http://localhost:5000/carts", {
       method: "POST",
       headers: {
@@ -15,7 +24,10 @@ const BrandDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-          console.log(data);     
+        console.log(data);
+        if (data.insertedId) {
+          toast.success('Product successfully added to my cart')
+        }
       });
     }
 

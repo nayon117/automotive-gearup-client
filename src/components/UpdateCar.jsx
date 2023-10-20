@@ -1,12 +1,20 @@
 // import toast from "react-hot-toast";
 
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 
 const UpdateCar = () => {
-  const updateCar = useLoaderData();
-  const { _id, name, brand, type, price, description, rating, image } =
-    updateCar;
+  const [updateCar,setUpdateCar] = useState({})
+  const loadedCar = useLoaderData();
+
+  useEffect(() => {
+    if (loadedCar) {
+      setUpdateCar(loadedCar)
+    }
+  },[loadedCar])
+
+  const { _id, name, brand, type, price, description, rating, image } = updateCar;
   const handleUpdateCars = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -17,15 +25,15 @@ const UpdateCar = () => {
     const description = form.description.value;
     const rating = form.rating.value;
     const image = form.image.value;
-    const updateCar = { name, brand, type, price, description, rating, image };
-    console.log(updateCar);
+    const updatedCar = { name, brand, type, price, description, rating, image };
+    console.log(updatedCar);
 
     fetch(`http://localhost:5000/update/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(updateCar),
+      body: JSON.stringify(updatedCar),
     })
       .then((res) => res.json())
       .then((data) => {

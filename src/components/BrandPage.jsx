@@ -1,18 +1,25 @@
 import { useLoaderData } from "react-router-dom";
 import BrandCard from "./BrandCard";
+import { useEffect, useState } from "react";
 
 const BrandPage = () => {
+  const [cars,setCars] = useState([])
   const brandCars = useLoaderData();
    
+  useEffect(() => {
+    if (brandCars) {
+      setCars(brandCars)
+    }
+  },[brandCars])
    
   return (
     <div>
-      {brandCars.length === 0 ? (
+      {cars.length === 0 ? (
         <p className="flex items-center justify-center text-3xl font-semibold min-h-screen">Products not available</p>
       ) : (
         <div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            {brandCars?.map((car) => (
+            {cars?.map((car) => (
               <BrandCard key={car._id} car={car}></BrandCard>
             ))}
           </div>
