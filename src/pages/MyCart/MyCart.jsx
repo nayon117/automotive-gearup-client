@@ -1,12 +1,14 @@
 import { useLoaderData } from "react-router-dom";
 import CartsCard from "./CartsCard";
 import { useEffect, useState } from "react";
+ 
 
 const MyCart = () => {
     const [carts,setCarts] = useState([])
     const loadedCarts = useLoaderData()
-
+    
     useEffect(() => {
+      
         if (loadedCarts) {
             setCarts(loadedCarts)
         }

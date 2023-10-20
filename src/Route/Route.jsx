@@ -53,7 +53,7 @@ const myCreatedRoute = createBrowserRouter([
         element: <BrandPage></BrandPage>,
         loader: ({ params }) =>
           fetch(
-            `https://automotive-gearup-server.vercel.app/cars/${params.brand}`
+            `http://localhost:5000/cars/${params.brand}`
           ),
       },
       {
@@ -65,7 +65,7 @@ const myCreatedRoute = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://automotive-gearup-server.vercel.app/details/${params.id}`
+            `http://localhost:5000/details/${params.id}`
           ),
       },
       {
@@ -78,7 +78,7 @@ const myCreatedRoute = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://automotive-gearup-server.vercel.app/update/${params.id}`
+            `http://localhost:5000/update/${params.id}`
           ),
       },
     ],
