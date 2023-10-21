@@ -1,17 +1,34 @@
 import { AiFillCar } from "react-icons/ai";
+import { motion } from "framer-motion"
+import { fadeIn } from "../variants";
 const Offer = () => {
     return (
         <div className="mt-20 mb-6">
-            <div>
+            <motion.div
+                 variants={fadeIn("up", 0.3)}
+                 initial="hidden"
+                 whileInView={'show'}
+                 viewport={{once:false, amount:0.7}}
+            >
                 <h2 className="text-3xl font-semibold text-center">What we offer</h2>
-            </div>
+            </motion.div>
             <div className="flex flex-col md:flex-row items-center gap-8 py-10">
                 {/* img */}
-                <div className="flex-1">
+                <motion.div
+                     variants={fadeIn("up", 0.4)}
+                     initial="hidden"
+                     whileInView={'show'}
+                     viewport={{once:false, amount:0.7}}
+                    className="flex-1">
                     <img className="rounded-md" src="https://i.ibb.co/K5d9smF/offer-img.webp" alt="car image" />
-                </div>
+                </motion.div>
                 {/* content  */}
-                <div className="flex-1 space-y-6">
+                <motion.div
+                     variants={fadeIn("up", 0.4)}
+                     initial="hidden"
+                     whileInView={'show'}
+                     viewport={{once:false, amount:0.7}}
+                    className="flex-1 space-y-6">
                     <div className="flex items-center gap-3">
                         <div>
                             <AiFillCar className="text-5xl"></AiFillCar>
@@ -39,7 +56,7 @@ const Offer = () => {
                             <p>Our service allows you to purchase a new car at an attractive price, while saving you all the trouble of handling your old car</p>
                        </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </div>
     );

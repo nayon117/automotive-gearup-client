@@ -19,7 +19,7 @@ const Testimonial = () => {
                         </div>
                     </div>
                     <div className="flex items-center mt-7">
-                        <div className="w-12 h-12 border border-indigo-700 rounded-full flex items-center justify-center">
+                        <div className="w-12 h-12 border border-red-500 rounded-full flex items-center justify-center">
                             <img src="https://i.ibb.co/R6WQhYj/Mask-Group.png" className="w-10 h-10 rounded-full" alt="profile" />
                         </div>
                         <div className="flex flex-col items-start ml-4">
@@ -39,7 +39,7 @@ const Testimonial = () => {
                         </div>
                     </div>
                     <div className="flex items-center mt-7">
-                        <div className="w-12 h-12 border border-indigo-700 rounded-full flex items-center justify-center">
+                        <div className="w-12 h-12 border border-red-500 rounded-full flex items-center justify-center">
                             <img src="https://i.ibb.co/C6bwf12/Mask-Group.png" className="w-10 h-10 rounded-full" alt="profile" />
                         </div>
                         <div className="flex flex-col items-start ml-4">
