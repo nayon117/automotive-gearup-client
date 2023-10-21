@@ -62,7 +62,7 @@ const UpdateCar = () => {
               placeholder="car name"
             />
           </div>
-          <div className=" w-1/2 ml-4">
+          <div className=" md:w-1/2 md:ml-4">
             <label className="label" htmlFor="brand">
               <span className="label-text">Brand</span>
             </label>
@@ -88,7 +88,7 @@ const UpdateCar = () => {
               placeholder="type"
             />
           </div>
-          <div className=" w-1/2 ml-4">
+          <div className=" md:w-1/2 md:ml-4">
             <label className="label" htmlFor="price">
               <span className="label-text">Price</span>
             </label>
@@ -114,7 +114,7 @@ const UpdateCar = () => {
               placeholder="description"
             />
           </div>
-          <div className=" w-1/2 ml-4">
+          <div className=" md:w-1/2 md:ml-4">
             <label className="label" htmlFor="rating">
               <span className="label-text">Rating</span>
             </label>
