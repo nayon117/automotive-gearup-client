@@ -47,16 +47,21 @@ const AddProduct = () => {
               placeholder="car name"
             />
           </div>
-          <div className=" md:w-1/2 md:ml-4">
-            <label className="label" htmlFor="brand">
-              <span className="label-text">Brand</span>
-            </label>
-            <input
-              className="input w-full input-bordered  "
-              name="brand"
-              placeholder="Brand"
-            />
-          </div>
+          <div className="md:w-1/2 md:ml-4">
+  <label className="label" htmlFor="brand">
+    <span className="label-text">Brand</span>
+  </label>
+  <select className="input w-full input-bordered" name="brand" id="brandSelect">
+    <option value="" disabled selected>Select a Brand</option>
+    <option value="Toyota">Toyota</option>
+    <option value="Ford">Ford</option>
+    <option value="BMW">BMW</option>
+    <option value="Mercedes-Benz">Mercedes-Benz</option>
+    <option value="Tesla">Tesla</option>
+    <option value="Honda">Honda</option>
+    
+  </select>
+</div>
         </div>
         {/*  type price */}
         <div className="md:flex mb-6">
