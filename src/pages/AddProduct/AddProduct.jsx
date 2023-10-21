@@ -54,7 +54,7 @@ const AddProduct = () => {
             <input
               className="input w-full input-bordered  "
               name="brand"
-              placeholder="brand"
+              placeholder="Brand"
             />
           </div>
         </div>
