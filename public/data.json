@@ -1,6 +1,5 @@
 [
     {
-      "_id": 1,
       "brand": "Toyota",
       "image": "https://i.ibb.co/YBRgSBH/toyota-640x426.webp",
       "img1" :"https://i.ibb.co/6ZqF8d9/toyota1.jpg",
@@ -8,7 +7,6 @@
       "img3" :"https://i.ibb.co/dDHD1PT/toyota3.jpg"
     },
     {
-      "_id": 2,
       "brand": "Ford",
       "image": "https://i.ibb.co/VtcDz6Y/ford-640x426.webp",
       "img1" :"https://i.ibb.co/TPW34Pz/ford1.jpg",
@@ -16,7 +14,6 @@
       "img3" :"https://i.ibb.co/cYHBdBC/ford3.jpg"
     },
     {
-      "_id": 3,
       "brand": "BMW",
       "image": "https://i.ibb.co/X7Z4RQG/bmw-640x426.webp",
       "img1" :"https://i.ibb.co/6ZqF8d9/toyota1.jpg",
@@ -24,7 +21,6 @@
       "img3" :"https://i.ibb.co/dDHD1PT/toyota3.jpg"
     },
     {
-      "_id": 4,
       "brand": "Mercedes-Benz",
       "image": "https://i.ibb.co/xHjgDgq/mercedez-640x426.webp",
       "img1" :"https://i.ibb.co/6ZqF8d9/toyota1.jpg",
@@ -32,7 +28,6 @@
       "img3" :"https://i.ibb.co/dDHD1PT/toyota3.jpg"
     },
     {
-      "_id": 5,
       "brand": "Tesla",
       "image": "https://i.ibb.co/Xtdq3qV/tesla-640x426.webp",
       "img1" :"https://i.ibb.co/6ZqF8d9/toyota1.jpg",
@@ -40,7 +35,6 @@
       "img3" :"https://i.ibb.co/dDHD1PT/toyota3.jpg"
     },
     {
-      "_id": 6,
       "brand": "Honda",
       "image": "https://i.ibb.co/1Rhq3dq/honda-640x426.webp"
     }
