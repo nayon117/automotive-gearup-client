@@ -24,6 +24,10 @@ body {
 .subtitle {
   @apply text-first tracking-wide text-center text-lg font-semibold uppercase;
 }
+.active{
+   color: #ea001e;
+   text-decoration: underline;
+}
 
 .btn-style {
   min-height: 2rem ;
