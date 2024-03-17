@@ -4,9 +4,9 @@ import { BiDollar } from "react-icons/bi";
 
 const WhyChoose = () => {
   return (
-    <div className="my-12">
-      <section className="relative block  py-10 md:py-20 md:px-10  border-t border-b section-container">
-        <div className="relative section-container text-center">
+    <div className="mt-16">
+      <section className="relative block   border-t border-b section-container">
+        <div className="relative  space-y-4 text-center">
           <span className="title">
             Why choose us
           </span>
