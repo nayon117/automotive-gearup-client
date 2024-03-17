@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { IoMenuSharp } from "react-icons/io5";
+
 
 const Navbar = () => {
   const [theme, setTheme] = useState(
@@ -76,35 +78,23 @@ const Navbar = () => {
     <div className="navbar  bg-first section-container">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
+          <label tabIndex={0} className="btn bg-first text-white border-none lg:hidden">
+          <IoMenuSharp  className="text-2xl" />
+
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52"
+            className=" dropdown-content mt-3 z-[1] p-2 shadow-md bg-first text-white  rounded-box w-52"
           >
             {navLinks}
           </ul>
         </div>
         <img
-          className="w-[20%] md:w-[13%] lg:w-[12%] filter invert text-white "
-          src="https://i.ibb.co/CVbmR1K/car.png"
+          className="w-[20%] md:w-[13%] lg:w-[14%] filter invert text-white "
+          src="https://i.ibb.co/LZrL6vj/logo-2-fotor-bg-remover-2024031781144.png"
           alt="logo"
         />
-        <p className="text-xl ml-2 font-semibold text-white">GearUp</p>
+        <p className="text-xl font-semibold text-white">GearUp</p>
       </div>
       <div className="navbar-center hidden lg:flex text-white ">
         <ul className="flex-center gap-6 px-1">{navLinks}</ul>
