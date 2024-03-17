@@ -68,7 +68,7 @@ const Register = () => {
   };
 
   return (
-    <section className="bg-gray-50    ">
+    <section className="bg-third">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto">
         <div className="w-full  bg-white rounded-lg shadow dark:border  max-w-md xl:p-0  ">
           <div className="     space-y-3 md:space-y-4 p-8">
@@ -174,7 +174,7 @@ const Register = () => {
                   </div>
                 </div>
               </div>
-              <button type="submit" className="w-full btn btn-neutral">
+              <button type="submit" className="w-full btn  bg-first text-white hover:text-first hover:bg-white">
                 Sign up
               </button>
               <p className="text-sm font-light text-gray-500 ">
