@@ -1,4 +1,5 @@
 import Banner from "./Banner";
+import Newsletter from "./Newsletter";
 import Offer from "./Offer";
 import Testimonial from "./Testimonial";
 import TopCar from "./TopCar";
@@ -6,11 +7,12 @@ import WhyChoose from "./WhyChoose";
 const Home = () => {
   return (
     <div>
-      <Banner></Banner>
+      <Banner/>
       <TopCar/>
-      <WhyChoose></WhyChoose>
-      <Offer></Offer>
-      <Testimonial></Testimonial>
+      <WhyChoose/>
+      <Offer/>
+      <Testimonial/>
+      <Newsletter/>
     </div>
   );
 };

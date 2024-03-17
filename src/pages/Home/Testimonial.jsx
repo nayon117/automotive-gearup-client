@@ -25,7 +25,7 @@ const Testimonial = () => {
     <section className="my-20">
       <div>
         <h2 className="title text-center">Testimonials</h2>
-        <p className="subtitle mt-3">
+        <p className="subtitle mt-3 text-gray-600">
         Discover the Stories of Delighted Customers
         </p>
       </div>
