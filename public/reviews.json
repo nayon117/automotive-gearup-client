@@ -1,0 +1,27 @@
+[
+    {
+      "_id": "1",
+      "rating": 4.5,
+      "details": "Great performance and stylish design. Love driving it!",
+      "name": "John Doe"
+    },
+    {
+      "_id": "2",
+      "rating": 5,
+      "details": "Excellent car with top-notch features. Couldn't be happier!",
+      "name": "Jane Smith"
+    },
+    {
+      "_id": "3",
+      "rating": 4,
+      "details": "Comfortable interior and smooth ride. Highly recommended.",
+      "name": "Michael Johnson"
+    },
+    {
+      "_id": "4",
+      "rating": 3.5,
+      "details": "Decent car for the price, but could use some improvement in fuel efficiency.",
+      "name": "Emily Brown"
+    }
+  ]
+  
