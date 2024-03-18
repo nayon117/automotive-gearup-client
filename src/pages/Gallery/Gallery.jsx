@@ -45,9 +45,7 @@ const Gallery = () => {
   // filtering data based on category
   const filterItems = (brand) => {
     const filtered =
-      brand === "all"
-        ? menu
-        : menu.filter((item) => item.brand === brand);
+      brand === "all" ? menu : menu.filter((item) => item.brand === brand);
     setFilteredItems(filtered);
     setSelectCategory(brand);
     setCurrentPage(1);

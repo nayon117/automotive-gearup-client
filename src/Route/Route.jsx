@@ -7,6 +7,7 @@ import Register from "../pages/Register/Register";
 import Gallery from "../pages/Gallery/Gallery";
 import Blogs from "../pages/Blogs/Blogs";
 import Contact from "../pages/Contact/Contact";
+import CardDetails from "../pages/DetailsPage/CardDetails";
 
 const myCreatedRoute = createBrowserRouter([
   {
@@ -31,7 +32,11 @@ const myCreatedRoute = createBrowserRouter([
         path:"/contact",
         element: <Contact/>
       },
-      
+      {
+        path:"/details/:id",
+        element:<CardDetails/>,
+        loader:({params})=>fetch(`http://localhost:5000/cars/${params.id}`)
+      }
     ],
   },
   {

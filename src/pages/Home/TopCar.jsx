@@ -1,5 +1,5 @@
-import  { useEffect, useState } from 'react';
-import Cards from '../../components/shared/Cards';
+import { useEffect, useState } from "react";
+import Cards from "../../components/shared/Cards";
 
 const TopCar = () => {
   const [topCars, setTopCars] = useState([]);
@@ -7,7 +7,7 @@ const TopCar = () => {
   useEffect(() => {
     const fetchTopCars = async () => {
       try {
-        const res = await fetch('http://localhost:5000/cars');
+        const res = await fetch("http://localhost:5000/cars");
         const data = await res.json();
 
         // Sort the cars based on price
@@ -15,7 +15,7 @@ const TopCar = () => {
 
         // Get the top 6 cars
         const topSixCars = sortedCars.slice(0, 6);
-        
+
         setTopCars(topSixCars);
       } catch (error) {
         console.log(error);
