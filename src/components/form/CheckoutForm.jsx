@@ -1,19 +1,16 @@
-/* eslint-disable react/prop-types */
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './CheckoutForm.css'
 import { ImSpinner9 } from 'react-icons/im'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
-
+import useAuth from '../../hooks/useAuth'
 import { createPaymentIntent, saveItemInfo } from '../../api/details'
-import { AuthContext } from '../../Provider/AuthProvider'
-
 
 const CheckoutForm = ({  itemInfo, closeModal }) => {
   const stripe = useStripe()
   const elements = useElements()
-  const {user} = useContext(AuthContext)
+  const { user } = useAuth()
   const navigate = useNavigate()
   const [cardError, setCardError] = useState('')
   const [clientSecret, setClientSecret] = useState('')
@@ -24,7 +21,7 @@ const CheckoutForm = ({  itemInfo, closeModal }) => {
   useEffect(() => {
     if (itemInfo.price > 0) {
       createPaymentIntent({ price: itemInfo.price }).then((data) => {
-        // console.log(data.clientSecret);
+        console.log(data.clientSecret);
         setClientSecret(data.clientSecret);
       });
     }
@@ -64,7 +61,7 @@ const CheckoutForm = ({  itemInfo, closeModal }) => {
           card: card,
           billing_details: {
             email: user?.email,
-            name: user?.name,
+            name: user?.displayName,
           },
         },
       })
@@ -74,7 +71,7 @@ const CheckoutForm = ({  itemInfo, closeModal }) => {
       setCardError(confirmError.message)
     }
 
-    // console.log('payment intent', paymentIntent)
+    console.log('payment intent', paymentIntent)
 
     if (paymentIntent.status === 'succeeded') {
       // save payment information to the server
@@ -123,7 +120,7 @@ const CheckoutForm = ({  itemInfo, closeModal }) => {
         <div className='flex mt-2 justify-around'>
           <button
             type='button'
-            className='inline-flex justify-center rounded-md border border-transparent bg-red-500 text-white px-4 py-2 text-sm font-medium   hover:bg-white hover:text-red-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2'
+            className='inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2'
             onClick={closeModal}
           >
             Cancel
@@ -131,7 +128,7 @@ const CheckoutForm = ({  itemInfo, closeModal }) => {
           <button
             type='submit'
             disabled={!stripe || !clientSecret || processing}
-            className='inline-flex justify-center rounded-md border border-transparent bg-first px-4 py-2 text-sm font-medium text-white hover:bg-second hover:text-first focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 btn-style'
+            className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2'
           >
             {processing ? (
               <ImSpinner9 className='m-auto animate-spin' size={24} />

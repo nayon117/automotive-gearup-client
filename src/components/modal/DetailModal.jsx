@@ -44,26 +44,26 @@ const DetailModal = ({ closeModal, isOpen, itemInfo }) => {
                 </Dialog.Title>
                 <div className="mt-2 rounded-lg border-2  border-third">
                   <p className="text-sm p-2 text-gray-500">
-                    Title: {itemInfo.title}
+                    Title: {itemInfo?.name}
                   </p>
                 </div>
                 <div className="mt-2 rounded-lg border-2  border-third">
-                  <p className="text-sm p-2 text-gray-500">Name: {itemInfo.name}</p>
+                  {/* <p className="text-sm p-2 text-gray-500">Name: {itemInfo.name}</p> */}
                 </div>
                 <div className="mt-2 rounded-lg border-2  border-third">
-                  <p className="text-sm p-2 text-gray-500 ">
+                  {/* <p className="text-sm p-2 text-gray-500 ">
                     Email: {itemInfo.email}
-                  </p>
+                  </p> */}
                 </div>
                 <div className="mt-2  rounded-lg border-2  border-third">
-                  <p className="text-sm p-2 text-gray-500">
+                  {/* <p className="text-sm p-2 text-gray-500">
                     Duration: {itemInfo?.duration} months
-                  </p>
+                  </p> */}
                 </div>
 
                 <div className="mt-2 rounded-lg border-2   border-third">
                   <p className="text-sm p-2 text-gray-500">
-                    Price: $ {itemInfo.price}
+                    Price: $ {itemInfo?.price}
                   </p>
                 </div>
                 <hr className="mt-8 " />

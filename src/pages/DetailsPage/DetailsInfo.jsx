@@ -1,42 +1,43 @@
-
+import { useEffect, useState } from "react";
+import Loader from "../../components/shared/Loader";
+// import { useLocation, useNavigate } from "react-router-dom";
+import DetailModal from "../../components/modal/DetailModal";
+import useAuth from "../../hooks/useAuth";
 
 const DetailsInfo = ({ detailInfo }) => {
   const { image, price, description, name } = detailInfo || {};
 
   const [isOpen, setIsOpen] = useState(false);
+  const [itemInfo, setItemInfo] = useState(null);
 
-  const user = useSelector((state) => state.data.user.user);
-  const axiosPublic = useAxiosPublic();
-  const navigate = useNavigate()
-  
-  const location = useLocation()
-  const [,refetch] = useCart()
+  const { user } =  useAuth()
+
 
   const closeModal = () => {
     setIsOpen(false);
   };
 
-  const [itemInfo, setItemInfo] = useState(null);
 
   useEffect(() => {
+    console.log("user:", user);
+    console.log("detailInfo:", detailInfo);
+  
     if (user && detailInfo) {
       const newInfo = {
-        stName: user.name || "",
-        stEmail: user.email || "",
-        stImage: user.photo || "",
-        title: detailInfo?.title,
-        name: detailInfo?.name,
-        price: detailInfo?.price,
-        image: detailInfo?.image,
-        duration: detailInfo?.duration,
-        details: detailInfo?.details,
-        email: detailInfo?.email,
-        classId: detailInfo?._id,
+        userName: user.displayName || "",
+        userEmail: user.email || "",
+        userImage: user.photoURL || "",
+        name: detailInfo?.name || "",
+        price: detailInfo?.price || "",
+        image: detailInfo?.image || "",
+        description: detailInfo?.description || "",
+        carId: detailInfo?._id || "",
       };
       setItemInfo(newInfo);
     }
     window.scrollTo(0, 0);
   }, [user, detailInfo]);
+  
 
   if (!itemInfo) {
     return (
@@ -46,10 +47,9 @@ const DetailsInfo = ({ detailInfo }) => {
     );
   }
 
-
   return (
-    <div className="section-container my-10 ">
-      <div className="font-[sans-serif]">
+    <div className="section-container my-6 ">
+      <div>
         <div className="p-6 lg:max-w-7xl max-w-2xl max-lg:mx-auto">
           <div className="grid items-start grid-cols-1 lg:grid-cols-5 gap-12">
             <div className="lg:col-span-3 bg-gray-100 w-full lg:sticky top-0 text-center p-8">
@@ -76,7 +76,27 @@ const DetailsInfo = ({ detailInfo }) => {
                   className="w-24 cursor-pointer"
                 />
               </div>
+              <div className="lg:col-span-2 mt-8">
+                {/* Your product details */}
+                {/* Add to Cart button */}
+                <button className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Add to Cart
+                </button>
+                {/* Payment button */}
+                <button
+                  className="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-4"
+                  onClick={() => setIsOpen(true)}
+                >
+                  Proceed to Payment
+                </button>
+                <DetailModal
+                  isOpen={isOpen}
+                  itemInfo={itemInfo}
+                  closeModal={closeModal}
+                ></DetailModal>
+              </div>
             </div>
+
             <div className="lg:col-span-2">
               <h2 className="text-2xl font-extrabold text-gray-800">{name}</h2>
               <div className="flex flex-wrap gap-4 mt-4">
