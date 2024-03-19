@@ -151,8 +151,8 @@ const Register = () => {
                 </div>
               </div>
               {registrationError && (
-              <p className="text-red-500">{registrationError}</p>
-            )}
+                <p className="text-red-500">{registrationError}</p>
+              )}
               <div className="flex items-center justify-between">
                 <div className="flex items-start">
                   <div className="flex items-center h-5">
@@ -174,7 +174,10 @@ const Register = () => {
                   </div>
                 </div>
               </div>
-              <button type="submit" className="w-full btn  bg-first text-white hover:text-first hover:bg-white">
+              <button
+                type="submit"
+                className="w-full btn  bg-first text-white hover:text-first hover:bg-white"
+              >
                 Sign up
               </button>
               <p className="text-sm font-light text-gray-500 ">
@@ -187,9 +190,8 @@ const Register = () => {
                 </Link>
               </p>
               <p className="divider">or</p>
-            <GoogleLogin></GoogleLogin>
+              <GoogleLogin></GoogleLogin>
             </form>
-            
           </div>
         </div>
       </div>

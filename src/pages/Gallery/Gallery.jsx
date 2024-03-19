@@ -15,7 +15,9 @@ const Gallery = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:5000/cars");
+        const res = await fetch(
+          "https://automotive-gearup-server.vercel.app/cars"
+        );
         const data = await res.json();
         setMenu(data);
         setFilteredItems(data);
