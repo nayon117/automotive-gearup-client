@@ -1,202 +1,176 @@
-import { useContext, useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
+import { TbFidgetSpinner } from "react-icons/tb";
+import { useForm } from "react-hook-form";
+import { imageUpload } from "../../api/utils";
+
 import toast from "react-hot-toast";
-import GoogleLogin from "../GoogleLogin/GoogleLogin";
+import { saveUser } from "../../api/auth";
+import useAuth from "../../hooks/useAuth";
+
 const Register = () => {
-  // states
-  const [showPassword, setShowPassword] = useState(false);
-  const [registrationError, setRegistrationError] = useState("");
-
-  // use context
-  const { signUp, handleUpdateProfile } = useContext(AuthContext);
-
   const navigate = useNavigate();
-  // onsubmit functionlity
-  const handleRegister = (e) => {
-    e.preventDefault();
+  const { createUser, updateUserProfile, signInWithGoogle, loading } =
+    useAuth() || {}
+  const {
+    register,
+    // reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-    // get data from input fields
-    const form = new FormData(e.currentTarget);
-    const name = form.get("name");
-    const photo = form.get("photo");
-    const email = form.get("email");
-    const password = form.get("password");
-    const check = e.target.check.checked;
+  const onSubmit = async (data) => {
+    const image = data.image[0];
 
-    // reset error
-    setRegistrationError("");
+    try {
+      // upload image to imgbb
+      const imageData = await imageUpload(image);
 
-    // some validations
-    if (password.length < 6) {
-      setRegistrationError("password should be 6 characters or more");
-      return;
-    } else if (!/^(?=.*[A-Z]).{1,}$/.test(password)) {
-      setRegistrationError("password should have at least on upperCase letter");
-      return;
-    } else if (
-      !/(?=.*[!@#$%^&*()_+\-=[\]{};:'"\\|,.<>/?]).{1,}/.test(password)
-    ) {
-      setRegistrationError(
-        "password should have at least one special characters"
-      );
-      return;
-    } else if (!check) {
-      setRegistrationError("please accept our terms and conditions");
-      return;
+      // create user
+      const result = await createUser(data.email, data.password);
+
+      // update user
+      await updateUserProfile(data.name, imageData?.data?.display_url);
+     
+      // save user information
+      const databaseResponse = await saveUser(result?.user)
+      console.log(databaseResponse);
+
+      toast.success("sign up successful");
+      navigate("/");
+      
+    } catch (error) {
+      console.log(error.message);
+      toast.error(error?.message)
     }
+  };
 
-    // create a new user
-    signUp(email, password)
-      .then((res) => {
-        console.log(res.user);
-        toast.success("sign up successfull");
-        navigate("/login");
-        handleUpdateProfile(name, photo)
-          .then(() => {
-            window.location.reload();
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      })
-      .catch((error) => {
-        console.log(error);
-        setRegistrationError(error.message);
-      });
+   //  google sign in
+   const handleGoogleLogin = async () => {
+    try {
+      // create user
+      const result = await signInWithGoogle();
+
+      // save user in database
+      const dbResponse = await saveUser(result?.user);
+      console.log(dbResponse);
+
+      navigate("/");
+      toast.success("sign up successful");
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.message);
+    }
   };
 
   return (
-    <section className="bg-third">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto">
-        <div className="w-full  bg-white rounded-lg shadow dark:border  max-w-md xl:p-0  ">
-          <div className="     space-y-3 md:space-y-4 p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
-              Sign up to your account
-            </h1>
-            <form onSubmit={handleRegister} className="space-y-3  md:space-y-4">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block mb-2 text-sm font-medium text-gray-900  "
-                >
-                  Your Name
+    <>
+      <div className="hero min-h-screen bg-base-200">
+        <div className="hero-content flex-col lg:flex-row">
+        
+          <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
                 </label>
                 <input
                   type="text"
                   name="name"
-                  id="text"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                  placeholder="your name"
+                  {...register("name", { required: true })}
+                  placeholder="Your Name "
+                  className="input input-bordered"
                 />
+                {errors.name && (
+                  <span className="text-red-500">Name is required</span>
+                )}
               </div>
               <div>
-                <label
-                  htmlFor="photo"
-                  className="block mb-2 text-sm font-medium text-gray-900  "
-                >
-                  Image URL
+                <label htmlFor="image" className="block mb-2 text-sm">
+                  Select Image:
                 </label>
                 <input
-                  type="text"
-                  name="photo"
-                  id="photo"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                  placeholder="image url..."
+                  required
+                  type="file"
+                  id="image"
+                  {...register("image", { required: true })}
+                  name="image"
+                  accept="image/*"
                 />
+                {errors.image && (
+                  <span className="text-red-500">Image is required</span>
+                )}
               </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900"
-                >
-                  Your email
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Email</span>
                 </label>
                 <input
                   type="email"
                   name="email"
-                  id="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                  placeholder="name@company.com"
-                  required
+                  {...register("email", { required: true })}
+                  placeholder="email"
+                  className="input input-bordered"
                 />
+                {errors.email && (
+                  <span className="text-red-500"> Email is required</span>
+                )}
               </div>
-              <div>
-                <label
-                  htmlFor="password"
-                  className="block mb-2 text-sm font-medium text-gray-900 "
-                >
-                  Password
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Password</span>
                 </label>
-                <div className="flex items-center relative">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    id="password"
-                    placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600  w-full p-2.5"
-                    required
-                  />
-                  <span
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-2"
-                  >
-                    {showPassword ? (
-                      <FaEyeSlash className="text-xl text-gray-500" />
-                    ) : (
-                      <FaEye className="text-xl text-gray-500" />
-                    )}
+                <input
+                  type="password"
+                  name="password"
+                  {...register("password", {
+                    minLength: 6,
+                    required: true,
+                  })}
+                  placeholder="password"
+                  className="input input-bordered"
+                />
+                {errors.password?.type === "required" && (
+                  <span className="text-red-500"> password is required</span>
+                )}
+                {errors.password?.type === "minLength" && (
+                  <span className="text-red-500">
+                    password must be at least 6 character long
                   </span>
-                </div>
+                )}
               </div>
-              {registrationError && (
-                <p className="text-red-500">{registrationError}</p>
-              )}
-              <div className="flex items-center justify-between">
-                <div className="flex items-start">
-                  <div className="flex items-center h-5">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      name="check"
-                      className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
-                    />
-                  </div>
-                  <div className="ml-3 text-sm">
-                    <label
-                      htmlFor="remember"
-                      className="text-gray-500 dark:text-gray-300"
-                    >
-                      I agree to the terms and condition
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <button
-                type="submit"
-                className="w-full btn  bg-first text-white hover:text-first hover:bg-white"
-              >
-                Sign up
-              </button>
-              <p className="text-sm font-light text-gray-500 ">
-                Already have an account?
-                <Link
-                  to="/login"
-                  className="font-medium text-primary-600 hover:underline  ml-2"
+
+              <div className="mt-2">
+                <button
+                  type="submit"
+                  className="bg-[#332885] btn w-full rounded-md py-2 text-white"
                 >
-                  Sign In
-                </Link>
-              </p>
-              <p className="divider">or</p>
-              <GoogleLogin></GoogleLogin>
+                  {loading ? (
+                    <TbFidgetSpinner className="animate-spin m-auto"></TbFidgetSpinner>
+                  ) : (
+                    "sign up "
+                  )}
+                </button>
+              </div>
             </form>
+            <div
+              onClick={handleGoogleLogin}
+              className="  btn bg-white mx-8  mb-4   "
+            >
+              <FcGoogle size={32} />
+
+              <p>Continue with Google</p>
+            </div>
+            <p className="text-center  mb-3    ">
+              Already have an account ?
+              <Link className="text-[#332885] ml-1" to="/login">
+                Login
+              </Link>
+            </p>
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 };
-
 export default Register;

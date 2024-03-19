@@ -22,21 +22,22 @@ const myCreatedRoute = createBrowserRouter([
       },
       {
         path: "/gallery",
-        element:<Gallery/>
+        element: <Gallery />,
       },
       {
-        path:"/blogs",
-        element:<Blogs/>
+        path: "/blogs",
+        element: <Blogs />,
       },
       {
-        path:"/contact",
-        element: <Contact/>
+        path: "/contact",
+        element: <Contact />,
       },
       {
-        path:"/details/:id",
-        element:<CardDetails/>,
-        loader:({params})=>fetch(`https://automotive-gearup-server.vercel.app/cars/${params.id}`)
-      }
+        path: "/details/:id",
+        element: <CardDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/cars/${params.id}`),
+      },
     ],
   },
   {
