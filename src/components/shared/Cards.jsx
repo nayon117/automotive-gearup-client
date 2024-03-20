@@ -6,7 +6,8 @@ const Cards = ({ item }) => {
   const {_id, image, description, price, name } = item || {};
 
   return (
-    <div className=" my-4 bg-white rounded-xl overflow-hidden shadow-lg">
+    <div data-aos="fade-up"
+    data-aos-duration="1000" className=" my-4 bg-white rounded-xl overflow-hidden shadow-lg">
       <img className="w-full" src={image} alt="Cars" />
       <div className="p-4">
         <div className="font-bold text-xl mb-2">{name}</div>

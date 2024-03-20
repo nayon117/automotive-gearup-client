@@ -17,7 +17,9 @@ const WhyChoose = () => {
         </div>
 
         <div className="relative mx-auto max-w-7xl z-10 grid grid-cols-1 gap-10 pt-14 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-md border border-neutral-800   p-8 text-center shadow">
+          <div data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="1500" className="rounded-md border border-neutral-800   p-8 text-center shadow">
             <TbBrandBandlab className="text-3xl mx-auto"></TbBrandBandlab>
             <h3 className="mt-6 text-gray-800">Wide range of brands</h3>
             <p className="my-4 mb-0 font-normal leading-relaxed tracking-wide text-gray-600">
@@ -26,7 +28,9 @@ const WhyChoose = () => {
             </p>
           </div>
 
-          <div className="rounded-md border border-neutral-800  p-8 text-center shadow">
+          <div data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="1500" className="rounded-md border border-neutral-800  p-8 text-center shadow">
             <VscWorkspaceTrusted className="text-3xl mx-auto"></VscWorkspaceTrusted>
             <h3 className="mt-6 text-gray-800">Trusted by our clients</h3>
             <p className="my-4 mb-0 font-normal leading-relaxed tracking-wide text-gray-600">
@@ -35,7 +39,9 @@ const WhyChoose = () => {
             </p>
           </div>
 
-          <div className="rounded-md border border-neutral-800  p-8 text-center shadow">
+          <div data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="1500" className="rounded-md border border-neutral-800  p-8 text-center shadow">
             <BiDollar className="text-3xl mx-auto"></BiDollar>
             <h3 className="mt-6 text-gray-800">Fast & easy financing</h3>
             <p className="my-4 mb-0 font-normal leading-relaxed tracking-wide text-gray-600">

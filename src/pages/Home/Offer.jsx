@@ -21,7 +21,7 @@ const Offer = () => {
             <div>
               <AiFillCar className="text-5xl"></AiFillCar>
             </div>
-            <div className="space-y-2">
+            <div data-aos="flip-up" className="space-y-2">
               <p className="text-xl font-bold">Pre-Sale Preparation</p>
               <p>
                 We are able to offer financing rates that many other car dealers
@@ -33,7 +33,7 @@ const Offer = () => {
             <div>
               <AiFillCar className="text-5xl"></AiFillCar>
             </div>
-            <div className="space-y-2">
+            <div data-aos="flip-up" className="space-y-2">
               <p className="text-xl font-bold">Financing</p>
               <p>
                 We are able to offer financing rates that many other car dealers
@@ -45,7 +45,7 @@ const Offer = () => {
             <div>
               <AiFillCar className="text-5xl"></AiFillCar>
             </div>
-            <div className="space-y-2">
+            <div data-aos="flip-up" className="space-y-2">
               <p className="text-xl font-bold">Trade-In Service</p>
               <p>
                 Our service allows you to purchase a new car at an attractive
