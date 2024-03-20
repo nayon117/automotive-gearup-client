@@ -12,3 +12,10 @@ export const saveUser = async (user) => {
     const { data } = await axiosPublic.put(`/users/${user?.email}`,currentUser)
     return data;
 }
+
+
+// get user role
+export const getRole = async (email) => {
+    const { data } = await axiosPublic(`/user/${email}`)
+    return data?.role ;
+}

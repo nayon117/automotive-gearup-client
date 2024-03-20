@@ -144,9 +144,11 @@ const Navbar = () => {
                 </button>
               </li>
               <li>
-                <button className="btn btn-sm whitespace-nowrap  btn-ghost text-black">
+                <Link to='/dashboard'>
+                <button className="btn btn-sm whitespace-nowrap  btn-ghost text-black ">
                   Dashboard
                 </button>
+                </Link>
               </li>
 
               <li>
