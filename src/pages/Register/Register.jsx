@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { TbFidgetSpinner } from "react-icons/tb";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { useForm } from "react-hook-form";
 import { imageUpload } from "../../api/utils";
 
@@ -11,52 +13,48 @@ import useAuth from "../../hooks/useAuth";
 const Register = () => {
   const navigate = useNavigate();
   const { createUser, updateUserProfile, signInWithGoogle, loading } =
-    useAuth() || {}
+    useAuth() || {};
   const {
     register,
-    // reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
 
   const onSubmit = async (data) => {
     const image = data.image[0];
 
     try {
-      // upload image to imgbb
       const imageData = await imageUpload(image);
 
-      // create user
       const result = await createUser(data.email, data.password);
 
-      // update user
       await updateUserProfile(data.name, imageData?.data?.display_url);
-     
-      // save user information
-      const databaseResponse = await saveUser(result?.user)
+
+      const databaseResponse = await saveUser(result?.user);
       console.log(databaseResponse);
 
-      toast.success("sign up successful");
+      toast.success("Sign up successful");
       navigate("/");
-      
     } catch (error) {
       console.log(error.message);
-      toast.error(error?.message)
+      toast.error(error?.message);
     }
   };
 
-   //  google sign in
-   const handleGoogleLogin = async () => {
+  const handleGoogleLogin = async () => {
     try {
-      // create user
       const result = await signInWithGoogle();
-
-      // save user in database
       const dbResponse = await saveUser(result?.user);
       console.log(dbResponse);
 
       navigate("/");
-      toast.success("sign up successful");
+      toast.success("Sign up successful");
     } catch (error) {
       console.log(error);
       toast.error(error?.message);
@@ -65,9 +63,8 @@ const Register = () => {
 
   return (
     <>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero min-h-screen bg-third">
         <div className="hero-content flex-col lg:flex-row">
-        
           <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
@@ -78,7 +75,7 @@ const Register = () => {
                   type="text"
                   name="name"
                   {...register("name", { required: true })}
-                  placeholder="Your Name "
+                  placeholder="Your Name"
                   className="input input-bordered"
                 />
                 {errors.name && (
@@ -109,60 +106,68 @@ const Register = () => {
                   type="email"
                   name="email"
                   {...register("email", { required: true })}
-                  placeholder="email"
+                  placeholder="Email"
                   className="input input-bordered"
                 />
                 {errors.email && (
-                  <span className="text-red-500"> Email is required</span>
+                  <span className="text-red-500">Email is required</span>
                 )}
               </div>
-              <div className="form-control">
+              <div className="form-control relative">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   {...register("password", {
                     minLength: 6,
                     required: true,
                   })}
-                  placeholder="password"
+                  placeholder="Password"
                   className="input input-bordered"
                 />
-                {errors.password?.type === "required" && (
-                  <span className="text-red-500"> password is required</span>
-                )}
-                {errors.password?.type === "minLength" && (
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute inset-y-0 right-3 flex items-center focus:outline-none top-8"
+                >
+                  {showPassword ? (
+                    <BsEyeSlash className="text-first" />
+                  ) : (
+                    <BsEye className="text-first" />
+                  )}
+                </button>
+                {errors.password && (
                   <span className="text-red-500">
-                    password must be at least 6 character long
+                    {errors.password.type === "required"
+                      ? "Password is required"
+                      : "Password must be at least 6 characters long"}
                   </span>
                 )}
               </div>
-
               <div className="mt-2">
                 <button
                   type="submit"
-                  className="bg-[#332885] btn w-full rounded-md py-2 text-white"
+                  className="bg-first w-full hover:bg-white hover:text-first btn text-white"
                 >
                   {loading ? (
-                    <TbFidgetSpinner className="animate-spin m-auto"></TbFidgetSpinner>
+                    <TbFidgetSpinner className="animate-spin m-auto" />
                   ) : (
-                    "sign up "
+                    "Sign up"
                   )}
                 </button>
               </div>
             </form>
             <div
               onClick={handleGoogleLogin}
-              className="  btn bg-white mx-8  mb-4   "
+              className="btn bg-white mx-8 p-1 mb-4"
             >
               <FcGoogle size={32} />
-
               <p>Continue with Google</p>
             </div>
-            <p className="text-center  mb-3    ">
-              Already have an account ?
+            <p className="text-center mb-3">
+              Already have an account?{" "}
               <Link className="text-[#332885] ml-1" to="/login">
                 Login
               </Link>
@@ -173,4 +178,5 @@ const Register = () => {
     </>
   );
 };
+
 export default Register;
