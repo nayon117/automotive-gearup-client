@@ -8,6 +8,7 @@ import Gallery from "../pages/Gallery/Gallery";
 import Blogs from "../pages/Blogs/Blogs";
 import Contact from "../pages/Contact/Contact";
 import CardDetails from "../pages/DetailsPage/CardDetails";
+import DashboardLayout from "../layout/DashboardLayout";
 
 const myCreatedRoute = createBrowserRouter([
   {
@@ -48,6 +49,11 @@ const myCreatedRoute = createBrowserRouter([
     path: "/register",
     element: <Register></Register>,
   },
+  {
+    path:'/dashboard',
+    element:<DashboardLayout></DashboardLayout>,
+    
+  }
 ]);
 
 export default myCreatedRoute;
