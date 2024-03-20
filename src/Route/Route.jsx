@@ -9,6 +9,8 @@ import Blogs from "../pages/Blogs/Blogs";
 import Contact from "../pages/Contact/Contact";
 import CardDetails from "../pages/DetailsPage/CardDetails";
 import DashboardLayout from "../layout/DashboardLayout";
+import PrivateRoute from "./PrivateRoute";
+import Profile from "../pages/Dashboard/Common/Profile";
 
 const myCreatedRoute = createBrowserRouter([
   {
@@ -51,8 +53,17 @@ const myCreatedRoute = createBrowserRouter([
   },
   {
     path:'/dashboard',
-    element:<DashboardLayout></DashboardLayout>,
-    
+    element:<PrivateRoute>
+      <DashboardLayout></DashboardLayout>
+    </PrivateRoute>,
+    children:[
+      // common routes
+      {
+        path:'profile',
+        element: <Profile/>
+      }
+    ]
+
   }
 ]);
 
