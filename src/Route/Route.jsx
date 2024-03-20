@@ -11,6 +11,13 @@ import CardDetails from "../pages/DetailsPage/CardDetails";
 import DashboardLayout from "../layout/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../pages/Dashboard/Common/Profile";
+import OrderList from "../pages/Dashboard/User/OrderList";
+import WishList from "../pages/Dashboard/User/WishList";
+import AddCar from "../pages/Dashboard/Seller/AddCar";
+import UpdateCar from "../pages/Dashboard/Seller/UpdateCar";
+import SellerRequest from "../pages/Dashboard/Admin/SellerRequest";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
+import AllCar from "../pages/Dashboard/Admin/AllCar";
 
 const myCreatedRoute = createBrowserRouter([
   {
@@ -61,6 +68,37 @@ const myCreatedRoute = createBrowserRouter([
       {
         path:'profile',
         element: <Profile/>
+      },
+      // user routes
+      {
+        path:'order-list',
+        element: <OrderList/>
+      },
+      {
+        path:'wish-list',
+        element: <WishList/>
+      },
+      // seller routes
+      {
+        path:'add-car',
+        element: <AddCar/>
+      },
+      {
+        path:'update-car',
+        element:<UpdateCar/>
+      },
+      // Admin routes
+      {
+        path:'seller-request',
+        element:<SellerRequest/>
+      },
+      {
+        path:'manage-users',
+        element:<ManageUsers/>
+      },
+      {
+        path:'all-cars',
+        element: <AllCar/>
       }
     ]
 

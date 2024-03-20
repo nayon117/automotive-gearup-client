@@ -40,11 +40,7 @@ const Sidebar = () => {
       <div className="bg-gray-100 text-gray-800 flex justify-between md:hidden">
         <div>
           <div className="block cursor-pointer p-4 font-bold">
-          <img
-          className="w-[20%] md:w-[13%] lg:w-[14%] filter invert text-white "
-          src="https://i.ibb.co/LZrL6vj/logo-2-fotor-bg-remover-2024031781144.png"
-          alt="logo"
-        />
+         GearUp
           </div>
         </div>
 
@@ -64,11 +60,7 @@ const Sidebar = () => {
         <div>
           <div>
             <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center  mx-auto">
-            <img
-          className="w-[20%] md:w-[13%] lg:w-[14%] filter invert text-white "
-          src="https://i.ibb.co/LZrL6vj/logo-2-fotor-bg-remover-2024031781144.png"
-          alt="logo"
-        />
+              GearUp
             </div>
           </div>
 
