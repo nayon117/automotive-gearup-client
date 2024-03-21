@@ -14,10 +14,11 @@ import Profile from "../pages/Dashboard/Common/Profile";
 import OrderList from "../pages/Dashboard/User/OrderList";
 import WishList from "../pages/Dashboard/User/WishList";
 import AddCar from "../pages/Dashboard/Seller/AddCar";
-import UpdateCar from "../pages/Dashboard/Seller/UpdateCar";
 import SellerRequest from "../pages/Dashboard/Admin/SellerRequest";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import AllCar from "../pages/Dashboard/Admin/AllCar";
+import ManageCars from "../pages/Dashboard/Seller/ManageCars";
+import UpdateCar from "../pages/Dashboard/Seller/UpdateCar";
 
 const myCreatedRoute = createBrowserRouter([
   {
@@ -59,50 +60,55 @@ const myCreatedRoute = createBrowserRouter([
     element: <Register></Register>,
   },
   {
-    path:'/dashboard',
-    element:<PrivateRoute>
-      <DashboardLayout></DashboardLayout>
-    </PrivateRoute>,
-    children:[
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
       // common routes
       {
-        path:'profile',
-        element: <Profile/>
+        path: "profile",
+        element: <Profile />,
       },
       // user routes
       {
-        path:'order-list',
-        element: <OrderList/>
+        path: "order-list",
+        element: <OrderList />,
       },
       {
-        path:'wish-list',
-        element: <WishList/>
+        path: "wish-list",
+        element: <WishList />,
       },
       // seller routes
       {
-        path:'add-car',
-        element: <AddCar/>
+        path: "add-car",
+        element: <AddCar />,
       },
       {
-        path:'update-car',
-        element:<UpdateCar/>
+        path: "manage-car",
+        element: <ManageCars />,
+      },
+      {
+        path: "update-car/:id",
+        element: <UpdateCar />,
       },
       // Admin routes
       {
-        path:'seller-request',
-        element:<SellerRequest/>
+        path: "seller-request",
+        element: <SellerRequest />,
       },
       {
-        path:'manage-users',
-        element:<ManageUsers/>
+        path: "manage-users",
+        element: <ManageUsers />,
       },
       {
-        path:'all-cars',
-        element: <AllCar/>
-      }
-    ]
-
-  }
+        path: "all-cars",
+        element: <AllCar />,
+      },
+    ],
+  },
 ]);
 
 export default myCreatedRoute;

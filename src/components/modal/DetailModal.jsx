@@ -48,17 +48,17 @@ const DetailModal = ({ closeModal, isOpen, itemInfo }) => {
                   </p>
                 </div>
                 <div className="mt-2 rounded-lg border-2  border-third">
-                  {/* <p className="text-sm p-2 text-gray-500">Name: {itemInfo.name}</p> */}
+                  <p className="text-sm p-2 text-gray-500">Name: {itemInfo.userName}</p>
                 </div>
                 <div className="mt-2 rounded-lg border-2  border-third">
-                  {/* <p className="text-sm p-2 text-gray-500 ">
-                    Email: {itemInfo.email}
-                  </p> */}
+                  <p className="text-sm p-2 text-gray-500 ">
+                    Email: {itemInfo.userEmail}
+                  </p>
                 </div>
                 <div className="mt-2  rounded-lg border-2  border-third">
-                  {/* <p className="text-sm p-2 text-gray-500">
-                    Duration: {itemInfo?.duration} months
-                  </p> */}
+                  <p className="text-sm p-2 text-gray-500">
+                    Description: {itemInfo?.description} months
+                  </p>
                 </div>
 
                 <div className="mt-2 rounded-lg border-2   border-third">

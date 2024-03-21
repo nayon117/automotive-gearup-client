@@ -10,7 +10,7 @@ const SellerMenu = () => {
         label="Add Car"
         address="add-car"
       />
-      <MenuItem icon={MdOutlineTipsAndUpdates} label="Update Car" address="update-car" />
+      <MenuItem icon={MdOutlineTipsAndUpdates} label="Manage Cars" address="manage-car" />
     </>
   );
 };
