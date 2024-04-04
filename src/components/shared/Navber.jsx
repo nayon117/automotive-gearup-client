@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { IoMenuSharp } from "react-icons/io5";
 
-
 const Navbar = () => {
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -33,27 +32,36 @@ const Navbar = () => {
             isPending ? "pending" : isActive ? "text-second" : ""
           }
         >
-         Home
+          Home
         </NavLink>
       </li>
       <li className="font-medium text-base">
-        <NavLink to="/gallery" className={({ isActive, isPending }) =>
+        <NavLink
+          to="/gallery"
+          className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-second" : ""
-          }>
+          }
+        >
           Gallery
         </NavLink>
       </li>
       <li className="font-medium text-base">
-        <NavLink to="/blogs"  className={({ isActive, isPending }) =>
+        <NavLink
+          to="/blogs"
+          className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-second" : ""
-          }>
+          }
+        >
           Blogs
         </NavLink>
       </li>
       <li className="font-medium text-base">
-        <NavLink to="/contact"  className={({ isActive, isPending }) =>
+        <NavLink
+          to="/contact"
+          className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-second" : ""
-          }>
+          }
+        >
           Contact
         </NavLink>
       </li>
@@ -78,9 +86,11 @@ const Navbar = () => {
     <div className="navbar  bg-first section-container">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn bg-first text-white border-none lg:hidden">
-          <IoMenuSharp  className="text-2xl" />
-
+          <label
+            tabIndex={0}
+            className="btn bg-first text-white border-none lg:hidden"
+          >
+            <IoMenuSharp className="text-2xl" />
           </label>
           <ul
             tabIndex={0}
@@ -144,10 +154,10 @@ const Navbar = () => {
                 </button>
               </li>
               <li>
-                <Link to='/dashboard'>
-                <button className="btn btn-sm whitespace-nowrap  btn-ghost text-black ml-5 ">
-                  Dashboard
-                </button>
+                <Link to="/dashboard">
+                  <button className="btn btn-sm whitespace-nowrap  btn-ghost text-black ml-5 ">
+                    Dashboard
+                  </button>
                 </Link>
               </li>
 

@@ -6,18 +6,14 @@ import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import axiosPublic from "../../../api";
 
-
 const ManageCars = () => {
   const [myCar, setMyCar] = useState([]);
   const { user } = useAuth();
   useEffect(() => {
-    fetch(
-        `http://localhost:5000/car-add/requests?email=${user?.email}`
-    )
+    fetch(`http://localhost:5000/car-add/requests?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyCar(data));
   }, [user?.email]);
-  
 
   const handleDeleteClass = (carItem) => {
     Swal.fire({
@@ -57,7 +53,6 @@ const ManageCars = () => {
             <th>Image</th>
             <th>update</th>
             <th>Delete</th>
-          
           </tr>
         </thead>
         <tbody>
@@ -74,7 +69,7 @@ const ManageCars = () => {
                   </div>
                 </div>
               </td>
-             
+
               <td>
                 <Link to={`/dashboard/update-car/${carItem._id}`}>
                   <button className="text-xl">
@@ -90,7 +85,6 @@ const ManageCars = () => {
                   <MdDeleteForever />
                 </button>
               </td>
-             
             </tr>
           ))}
         </tbody>

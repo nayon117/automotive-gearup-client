@@ -2,8 +2,8 @@ import toast from "react-hot-toast";
 import useAuth from "../../../hooks/useAuth";
 
 const AddCar = () => {
-    const {user} =  useAuth()
-    console.log(user);
+  const { user } = useAuth();
+  console.log(user);
   const handleAddCars = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,7 +15,16 @@ const AddCar = () => {
     const rating = form.rating.value;
     const image = form.image.value;
     const email = user.email || "";
-    const newCar = { name, brand, type, price, description, rating, image,email };
+    const newCar = {
+      name,
+      brand,
+      type,
+      price,
+      description,
+      rating,
+      image,
+      email,
+    };
     console.log(newCar);
 
     fetch("http://localhost:5000/cars", {
