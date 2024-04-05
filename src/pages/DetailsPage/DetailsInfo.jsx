@@ -3,14 +3,20 @@ import Loader from "../../components/shared/Loader";
 // import { useLocation, useNavigate } from "react-router-dom";
 import DetailModal from "../../components/modal/DetailModal";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+import axiosPublic from "../../api";
+import { useNavigate } from "react-router-dom";
+import useCart from "../../hooks/useCart";
 
 const DetailsInfo = ({ detailInfo }) => {
-  const { image, price, description, name } = detailInfo || {};
+  const {_id, image, price, description, name } = detailInfo || {};
 
   const [isOpen, setIsOpen] = useState(false);
   const [itemInfo, setItemInfo] = useState(null);
 
   const { user } =  useAuth()
+  const navigate = useNavigate();
+  const [,refetch] = useCart()
 
 
   const closeModal = () => {
@@ -47,6 +53,51 @@ const DetailsInfo = ({ detailInfo }) => {
     );
   }
 
+  const handleAddToCart =()=> {
+   
+    if (user && user.email) {
+      // send to database
+      const cartItem = {
+        menuId: _id,
+        email: user.email,
+        name,
+        description,
+        price
+      }
+      axiosPublic.post('/carts', cartItem)
+        .then(res => {
+          console.log(res.data);
+          if (res.data  ) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `${name} added to your cart successfully`,
+              showConfirmButton: false,
+              timer: 1500
+            });
+            // refetch cart to update the cart items count 
+            refetch()
+          }
+      })
+    }
+    else {
+      Swal.fire({
+        title: "You are not logged in?",
+        text: "Please log in to add to the cart!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, log In!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // send the user to login page
+          navigate('/login',{state:{from:location}})
+        }
+      });
+    }
+  }
+
   return (
     <div className="section-container my-6 ">
       <div>
@@ -77,9 +128,9 @@ const DetailsInfo = ({ detailInfo }) => {
                 />
               </div>
               <div className="lg:col-span-2 mt-8">
-                {/* Your product details */}
+               
                 {/* Add to Cart button */}
-                <button className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button onClick={handleAddToCart} className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                   Add to Cart
                 </button>
                 {/* Payment button */}
