@@ -45,9 +45,11 @@ const myCreatedRoute = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <CardDetails />,
+        element:<PrivateRoute> <CardDetails /></PrivateRoute>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/cars/${params.id}`),
+          fetch(
+            `https://automotive-gearup-server.vercel.app/cars/${params.id}`
+          ),
       },
     ],
   },
