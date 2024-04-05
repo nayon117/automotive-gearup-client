@@ -17,7 +17,7 @@ const OrderList = () => {
         <div className="overflow-x-auto">
           <table className="min-w-[90%] shadow-md border mx-auto border-gray-100 my-6">
             <thead>
-              <tr className="bg-second text-white">
+              <tr className="bg-gradient-to-r from-second to-first text-white font-alt text-xl">
                 <th className="py-4 px-6 text-lg text-left border-b">
                   Product Image
                 </th>
