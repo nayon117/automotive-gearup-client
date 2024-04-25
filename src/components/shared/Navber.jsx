@@ -83,12 +83,12 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar  bg-first section-container">
+    <div className="navbar  bg-fourth section-container">
       <div className="navbar-start">
         <div className="dropdown">
           <label
             tabIndex={0}
-            className="btn bg-first text-white border-none lg:hidden"
+            className="btn bg-fourth text-white border-none lg:hidden"
           >
             <IoMenuSharp className="text-2xl" />
           </label>

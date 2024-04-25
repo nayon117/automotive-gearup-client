@@ -4,9 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        first: "#000c21",
+        first: "#1d4ed8",
         second: "#ea001e",
         third: "#f2f2f2",
+        fourth: "#000c21",
       },
     },
   },

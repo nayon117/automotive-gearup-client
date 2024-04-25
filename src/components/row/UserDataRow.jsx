@@ -21,12 +21,16 @@ const UserDataRow = ({ user, refetch }) => {
     }
   };
   return (
-    <tr>
+    <tr className="font-semibold">
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <p className="text-gray-900 whitespace-no-wrap">{user?.name}</p>
       </td>
       <td className="px-5 py-5  border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 w-52  ">{user?.image}</p>
+        <img
+          className="w-10 h-10 rounded-full"
+          src={user?.image}
+          alt="user"
+        />
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <p className="text-gray-900 whitespace-no-wrap">{user?.role}</p>
@@ -42,7 +46,7 @@ const UserDataRow = ({ user, refetch }) => {
         >
           <span
             aria-hidden="true"
-            className="absolute inset-0 bg-[#332885]  opacity-80 rounded-full"
+            className="absolute inset-0 bg-first  opacity-80  "
           ></span>
           <span className="relative">Update Role</span>
         </span>

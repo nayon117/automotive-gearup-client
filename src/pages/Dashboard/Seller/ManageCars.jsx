@@ -10,9 +10,7 @@ const ManageCars = () => {
   const [myCar, setMyCar] = useState([]);
   const { user } = useAuth();
   useEffect(() => {
-    fetch(
-      `https://automotive-gearup-server.vercel.app/car-add/requests?email=${user?.email}`
-    )
+    fetch(`http://localhost:5000/car-add/requests?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyCar(data));
   }, [user?.email]);

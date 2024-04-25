@@ -27,7 +27,7 @@ const AddCar = () => {
     };
     console.log(newCar);
 
-    fetch("https://automotive-gearup-server.vercel.app/cars", {
+    fetch("http://localhost:5000/cars", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

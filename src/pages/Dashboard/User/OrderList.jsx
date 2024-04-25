@@ -5,9 +5,7 @@ const OrderList = () => {
   const [orderList, setOrderList] = useState([]);
   const { user } = useAuth();
   useEffect(() => {
-    fetch(
-      `https://automotive-gearup-server.vercel.app/bookings?userEmail=${user?.email}`
-    )
+    fetch(`http://localhost:5000/bookings?userEmail=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setOrderList(data));
   }, [user?.email]);

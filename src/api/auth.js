@@ -21,9 +21,9 @@ export const getRole = async (email) => {
 }
 
 // get all  users
-export const getUsers = async () => {
-    const { data } = await axiosPublic.get(`/users`)
-    return data;
+export const getAllUsers = async () => {
+    const { data } = await axiosPublic('/users')
+    return data ;
 }
 
 // update user role
