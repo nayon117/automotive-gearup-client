@@ -19,3 +19,18 @@ export const getRole = async (email) => {
     const { data } = await axiosPublic(`/user/${email}`)
     return data?.role ;
 }
+
+// get all  users
+export const getUsers = async () => {
+    const { data } = await axiosPublic.get(`/users`)
+    return data;
+}
+
+// update user role
+export const updateRole = async ({email,role}) => {
+    const currentUser = {
+         email,role
+    }
+    const { data } = await axiosPublic.put(`/users/update/${email}`,currentUser)
+    return data;
+}
